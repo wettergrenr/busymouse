@@ -1,0 +1,8 @@
+[Unit]
+Description=Periodically move mouse cursor
+
+[Service]
+ExecStart=/home/robbie/gitrepos/busymouse/busymouse
+
+[Install]
+WantedBy=default.target
