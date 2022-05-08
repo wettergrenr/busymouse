@@ -6,7 +6,7 @@
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 
-int main(int argc, char *argv[]){
+int main(int argc, char *argv[]) {
 
      Display *display;
      Screen *screen;
@@ -38,7 +38,7 @@ int main(int argc, char *argv[]){
      sigaddset(&waitset, SIGTERM);
      sigaddset(&waitset, SIGKILL);
      sigaddset(&waitset, SIGQUIT);
-     timeout.tv_sec = 5;
+     timeout.tv_sec = 60;
      
      do {
          result = XQueryPointer(display, root_window, &window_returned,
@@ -57,11 +57,11 @@ int main(int argc, char *argv[]){
                                 &window_returned, &root_x, &root_y, &win_x, &win_y,
                                 &mask_return);
 
-         //         printf("Mouse is at (%d,%d)\n", root_x, root_y);
+         //    printf("Mouse is at (%d,%d)\n", root_x, root_y);
 
          sigtimedwait(&waitset, &info, &timeout);
      } while (info.si_signo == 0);
-     //     printf("Got %d\nExiting gracefully\n",info.si_signo);
+     //    printf("Got %d\nExiting gracefully\n",info.si_signo);
 
      return 0;
 }
