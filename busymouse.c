@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
          result = XQueryPointer(display, root_window, &window_returned,
                                 &window_returned, &root_x, &root_y, &win_x, &win_y,
                                 &mask_return);
-         printf("Mouse is at (%d,%d)\n", root_x, root_y);
+         //         printf("Mouse is at (%d,%d)\n", root_x, root_y);
 
          if (root_x >= mid_x) new_x = root_x -1;
          else new_x = root_x + 1;
