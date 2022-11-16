@@ -5,4 +5,4 @@ Description=Periodically move mouse cursor
 ExecStart=/home/robbie/gitrepos/busymouse/busymouse
 
 [Install]
-WantedBy=graphical.target
+WantedBy=default.target

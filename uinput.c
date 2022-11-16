@@ -3,21 +3,31 @@
 #include <string.h>
 #include <unistd.h>
 #include <linux/uinput.h>
+#include <signal.h>
+#include <stdio.h>
+
+/* From https://airtower.wordpress.com/2010/06/16/catch-sigterm-exit-gracefully/ */
+volatile sig_atomic_t done = 0;
+ 
+void term(int signum)
+{
+  done = 1;
+}
 
 /* emit function is identical to of the first example */
 
 void emit(int fd, int type, int code, int val)
 {
-   struct input_event ie;
+  struct input_event ie;
 
-   ie.type = type;
-   ie.code = code;
-   ie.value = val;
-   /* timestamp values below are ignored */
-   ie.time.tv_sec = 0;
-   ie.time.tv_usec = 0;
+  ie.type = type;
+  ie.code = code;
+  ie.value = val;
+  /* timestamp values below are ignored */
+  ie.time.tv_sec = 0;
+  ie.time.tv_usec = 0;
 
-   write(fd, &ie, sizeof(ie));
+  write(fd, &ie, sizeof(ie));
 }
 
 int main(void)

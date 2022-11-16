@@ -1,0 +1,8 @@
+[Unit]
+Description=Periodically move mouse cursor
+
+[Service]
+ExecStart=/usr/local/sbin/jiggler
+
+[Install]
+WantedBy=graphical.target
